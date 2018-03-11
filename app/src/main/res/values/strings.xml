@@ -9,6 +9,9 @@
     <string name="release_substring">Release date: \n</string>
     <string name="rating_substring">Rating: \n</string>
 
+    <string name="trailer_textview_substring">Watch&#160;</string>
+    <string name="trailer_textview_substring2">:&#160;</string>
+
     <!--Menu-->
     <string name="switch_sorting">Switch Sorting</string>
 </resources>

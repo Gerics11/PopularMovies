@@ -7,13 +7,15 @@ import android.os.Parcelable;
 public class Movie implements Parcelable {
 
     private String title;
+    private String movieId;
     private String releaseDate;
     private String image;
     private double rating;
     private String plot;
 
-    Movie(String title, String releaseDate, String image, double rating, String plot) {
+    Movie(String title, String movieId, String releaseDate, String image, double rating, String plot) {
         this.title = title;
+        this.movieId = movieId;
         this.releaseDate = releaseDate;
         this.image = image;
         this.rating = rating;
@@ -28,6 +30,14 @@ public class Movie implements Parcelable {
         this.title = title;
     }
 
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+
     public String getReleaseDate() {
         return releaseDate;
     }
@@ -37,7 +47,13 @@ public class Movie implements Parcelable {
     }
 
     public String getImage() {
-        return "http://image.tmdb.org/t/p/w342/" + image;
+
+
+        if (image != null) {
+            return "http://image.tmdb.org/t/p/w342/" + image;
+        } else {
+            return null;
+        }
     }
 
     public void setImage(String image) {
@@ -62,19 +78,21 @@ public class Movie implements Parcelable {
 
     //parcelable implementation
     private Movie(Parcel in) {
-        String[] data = new String[5];
+        String[] data = new String[6];
 
         in.readStringArray(data);
         this.title = data[0];
-        this.releaseDate = data[1];
-        this.image = data[2];
-        this.rating = Double.parseDouble(data[3]);
-        this.plot = data[4];
+        this.movieId = data[1];
+        this.releaseDate = data[2];
+        this.image = data[3];
+        this.rating = Double.parseDouble(data[4]);
+        this.plot = data[5];
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[]{this.title,
+                this.movieId,
                 this.releaseDate,
                 this.image,
                 String.valueOf(this.rating),

@@ -11,24 +11,45 @@
         android:layout_height="wrap_content"
         tools:context="com.example.android.popularmovies.DetailActivity">
 
-        <ImageView
-            android:id="@+id/iv_poster"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_vertical"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:id="@+id/iv_poster"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_favorite"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_poster"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="wrap"
             tools:text="title of the movie" />
 
         <TextView
@@ -65,6 +86,27 @@
 plot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movie
 plot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movie
 plot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movieplot of the movie" />
+
+        <LinearLayout
+            android:layout_marginBottom="24dp"
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:id="@+id/layout_trailers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_plot"
+            app:layout_constraintStart_toStartOf="parent">
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:id="@+id/layout_reviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_trailers"
+            app:layout_constraintStart_toStartOf="parent">
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
